@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/expenses")
+@CrossOrigin(origins = "http://localhost:3000")
 
 public class ExpenseController {
     @Autowired
@@ -24,4 +25,5 @@ public class ExpenseController {
     public ResponseEntity<List<Object[]>> getExpenseSummary(@PathVariable Long userId){
         return ResponseEntity.ok(expenseService.getExpenseSummary(userId));
     }
+
 }
