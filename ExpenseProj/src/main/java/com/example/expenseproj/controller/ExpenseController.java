@@ -17,9 +17,9 @@ public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
 
-    @PostMapping
-    public ResponseEntity<Expense> createExpense(@RequestBody Expense expense){
-        return ResponseEntity.ok(expenseService.addExpense(expense));
+    @PostMapping("/{userId}")
+    public ResponseEntity<Expense> createExpense(@RequestBody Expense expense, @PathVariable Long userId){
+        return ResponseEntity.ok(expenseService.addExpense(expense, userId));
     }
     @GetMapping("/summary/{userId}")
     public ResponseEntity<List<Object[]>> getExpenseSummary(@PathVariable Long userId){

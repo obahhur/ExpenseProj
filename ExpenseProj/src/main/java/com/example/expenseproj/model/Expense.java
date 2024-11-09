@@ -1,5 +1,6 @@
 package com.example.expenseproj.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
@@ -19,7 +20,10 @@ public class Expense {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
+
+    public Expense(){}
 
     public Long getId() {
         return id;

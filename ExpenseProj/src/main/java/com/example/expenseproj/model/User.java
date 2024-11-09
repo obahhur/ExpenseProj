@@ -1,10 +1,12 @@
 package com.example.expenseproj.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +17,7 @@ public class User {
     private String passwordHash;
 
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    @JsonManagedReference
 
     private List<Expense> expenses;
 
